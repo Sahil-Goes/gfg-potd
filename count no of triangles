@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+//Approach: We keep i at last elt , end at last-1 and st at arr[0] . We increase i and keep others constant till 
+// the condition ( arr[st] + arr[end] > arr[i]) is met and increment count to indicate a triangle has been found
+
+class Solution {
+  public:
+    // Function to count the number of possible triangles.
+    int countTriangles(vector<int>& arr) {
+        int count = 0;
+        sort(arr.begin(), arr.end());
+        
+        for(int i=arr.size()-1 ; i>=0; i--){
+            int start=0, end=i-1;
+            
+            while(start<end){
+                if (arr[start] + arr[end] > arr[i]){
+                    count += end-start;
+                    end--;
+                }
+                else{
+                    start++;
+                }
+            }
+        }
+        return count;
+    }
+};
+
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    cin.ignore(); // To ignore the newline after the integer input
+    while (t--) {
+        int n;
+        vector<int> a;
+        string input;
+
+        // Input format: first number n followed by the array elements
+        getline(cin, input);
+        stringstream ss(input);
+        int num;
+        while (ss >> num)
+            a.push_back(num);
+
+        Solution obj;
+        cout << obj.countTriangles(a) << "\n~\n";
+    }
+    return 0;
+}
+// } Driver Code Ends
