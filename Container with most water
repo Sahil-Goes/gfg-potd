@@ -1,0 +1,21 @@
+//Approach: Calculate water area = distance between points x minimum Height of points
+s,e -> so we are at maximum distance, now we only need to find the max height
+
+class Solution {
+  public:
+    int maxWater(vector<int> &arr) {
+        int s=0, e=arr.size()-1 , maxArea=0, area=0;
+        
+        while(s<e){
+           area = min(arr[s],arr[e]) * (e-s);
+           maxArea = max(maxArea,area);
+           
+           if(arr[s]<arr[e]){ 
+               s++; }
+           else{
+               e--;
+           }
+        }
+        return maxArea;
+    }
+};
