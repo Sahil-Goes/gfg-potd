@@ -1,0 +1,19 @@
+//Approach: use 3 pointers prev, curr and next to get reverse of list
+class Solution {
+  public:
+    Node* reverseList(struct Node* head) {
+        // code here
+        Node *curr = head;
+        Node *prev = NULL;
+        Node *next = head->next;
+        
+        while(next != nullptr){
+            next = curr->next;
+            curr->next = prev;
+            
+            prev=curr;
+            curr=next;
+        }
+        return prev;
+    }
+};
