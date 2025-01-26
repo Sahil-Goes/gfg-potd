@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    // Function to check if the linked list has a loop.
+    bool detectLoop(Node* head) {
+        Node *slow = head;
+        Node *fast = head;
+        
+        while(fast && fast->next){  //As we are going 2 steps forward so we need to check fast is true also
+            slow=slow->next;
+            fast=fast->next->next;
+            if(slow==fast) 
+                return true;       //Indicates loop found 
+        }
+        return false;              //Indicates no loop present
+    }
+};
