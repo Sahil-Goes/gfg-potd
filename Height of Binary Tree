@@ -1,0 +1,11 @@
+class Solution {
+  public:
+    // Function to find the height of a binary tree.
+    int height(Node* node) {
+        //base case
+        if(node==NULL) return -1;
+        
+        //recursive case
+        return max(height(node->left), height(node->right)) +1;
+    }
+};
